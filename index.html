@@ -17,6 +17,7 @@
 var EXEC = 'https://script.google.com/macros/s/AKfycbzSyQv2tnK5iHOrP3JKzPTDORiUMrhyOM8SpoMC3o_v9N_v_taVQCcuWDZs0dFZ3q1LMw/exec';
 // ===== המשתמש נקבע לפי הכתובת: ...?u=guy או ...?u=yaara =====
 var u = new URLSearchParams(location.search).get('u') || '';
+try { if (u) localStorage.setItem('u', u); else u = localStorage.getItem('u') || ''; } catch (e) {}
 var f = document.createElement('iframe');
 f.src = EXEC + (u ? '?u=' + encodeURIComponent(u) : '');
 f.allow = 'clipboard-write';
